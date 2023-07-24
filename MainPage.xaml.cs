@@ -37,93 +37,30 @@ public partial class MainPage : ContentPage
             currentWeatherTitleLabel.HorizontalTextAlignment = TextAlignment.Center;
             fetchWeatherList.Add(currentWeatherTitleLabel);
 
-            Label locationName = new Label();
-            locationName.Text = $"Город: {api.location.Name}";
-            fetchWeatherList.Add(locationName);
-            
-            Label regionLabel = new Label();
-            regionLabel.Text = $"Регион: {api.location.Region}";
-            fetchWeatherList.Add(regionLabel);
-
-            Label countryLabel = new Label();
-            countryLabel.Text = $"Страна: {api.location.Country}";
-            fetchWeatherList.Add(countryLabel);
-
-            Label latitudeLabel = new Label();
-            latitudeLabel.Text = $"Широта на Google Maps: {api.location.Lat}";
-            fetchWeatherList.Add(latitudeLabel);
-
-            Label longitudeLabel = new Label();
-            longitudeLabel.Text = $"Долгота на Google Maps: {api.location.Lon}";
-            fetchWeatherList.Add(longitudeLabel);
-
-            Label timeZoneIDLabel = new Label();
-            timeZoneIDLabel.Text = $"Временная Зона ID: {api.location.TzId}";
-            fetchWeatherList.Add(timeZoneIDLabel);
-
-            Label localTimeLabel = new Label();
-            localTimeLabel.Text = $"Текущие время: {api.location.Localtime}";
-            fetchWeatherList.Add(localTimeLabel);
-
-            Label lastUpdatedLabel = new Label();
-            lastUpdatedLabel.Text = $"Последние обновление: {api.current.LastUpdated}";
-            fetchWeatherList.Add(lastUpdatedLabel);
-
-            Label tempCelciusLabel = new Label();
-            tempCelciusLabel.Text = $"Температура в цельсиях: {api.current.TempC}";
-            fetchWeatherList.Add(tempCelciusLabel);
-
-            Label tempFahrenheitLabel = new Label();
-            tempFahrenheitLabel.Text = $"Температура в фаренгейте: {api.current.TempF}";
-            fetchWeatherList.Add(tempFahrenheitLabel);
-
-            Label conditionLabel = new Label();
-            conditionLabel.Text = $"Текущая погода: {api.current.Condition.Text}";
-            fetchWeatherList.Add(conditionLabel);
-
-            Label windKphLabel = new Label();
-            windKphLabel.Text = $"Ветер (км/ч): {api.current.WindKph}";
-            fetchWeatherList.Add(windKphLabel);
-
-            Label windMphLabel = new Label();
-            windMphLabel.Text = $"Ветер (миль/ч): {api.current.WindMph}";
-            fetchWeatherList.Add(windMphLabel);
-
-            Label windDegreeLabel = new Label();
-            windDegreeLabel.Text = $"Градус ветра: {api.current.WindDegree}";
-            fetchWeatherList.Add(windDegreeLabel);
-
-            Label windDirLabel = new Label();
-            windDirLabel.Text = $"Направление ветра: {api.current.WindDir}";
-            fetchWeatherList.Add(windDirLabel);
-
-            Label pressureMbLabel = new Label();
-            pressureMbLabel.Text = $"Атмосферное давление (Ртутного Столба): {api.current.PressureIn}";
-            fetchWeatherList.Add(pressureMbLabel);
-
-            Label precipInLabel = new Label();
-            precipInLabel.Text = $"Осадок (Ртутного Столба): {api.current.PrecipIn}";
-            fetchWeatherList.Add(precipInLabel);
-
-            Label humidityLabel = new Label();
-            humidityLabel.Text = $"Влажность: {api.current.Humidity}";
-            fetchWeatherList.Add(humidityLabel);
-
-            Label cloudLabel = new Label();
-            cloudLabel.Text = $"Облачность: {api.current.Cloud}";
-            fetchWeatherList.Add(cloudLabel);
-
-            Label feelsLikeCLabel = new Label();
-            feelsLikeCLabel.Text = $"Чувствуется градусов в цельсиях как: {api.current.FeelslikeC}";
-            fetchWeatherList.Add(feelsLikeCLabel);
-
-            Label feelsLikeFLabel = new Label();
-            feelsLikeFLabel.Text = $"Чувствуется градусов в фаренгейтах как: {api.current.FeelslikeF}";
-            fetchWeatherList.Add(feelsLikeFLabel);
-
-            Label GustKph = new Label();
-            GustKph.Text = $"Порыв ветра (км/ч): {api.current.GustKph}";
-            fetchWeatherList.Add(GustKph);
+            Label currentWeatherDescriptionLabel = new Label();
+            currentWeatherDescriptionLabel.Text = $"Город: {api.location.Name}\n" +
+                $"Регион: {api.location.Region}\n" +
+                $"Страна: {api.location.Country}\n" +
+                $"Широта на Google Maps: {api.location.Lat}°\n" +
+                $"Долгота на Google Maps: {api.location.Lon}°\n" +
+                $"Временная Зона ID: {api.location.TzId}\n" +
+                $"Текущие время: {api.location.Localtime}\n" +
+                $"Последние обновление: {api.current.LastUpdated}\n" +
+                $"Температура в цельсиях: {api.current.TempC} °C\n" +
+                $"Температура в фаренгейте: {api.current.TempF} °F\n" +
+                $"Текущая погода: {api.current.Condition.Text}\n" +
+                $"Ветер (км/ч): {api.current.WindKph}\n" +
+                $"Ветер (миль/ч): {api.current.WindMph}\n" +
+                $"Градус ветра: {api.current.WindDegree}°\n" +
+                $"Направление ветра: {api.current.WindDir} ☴\n" +
+                $"Атмосферное давление (Ртутного Столба): {api.current.PressureIn}\n" +
+                $"Осадок (Ртутного Столба): {api.current.PrecipIn} ↓\n" +
+                $"Влажность: {api.current.Humidity} 🜁\n" +
+                $"Облачность: {api.current.Cloud} ☁️\n" +
+                $"Чувствуется градусов в цельсиях как: {api.current.FeelslikeC} °C\n" +
+                $"Чувствуется градусов в фаренгейтах как: {api.current.FeelslikeF} °F\n" +
+                $"Порыв ветра (км/ч): {api.current.GustKph} 💨";
+            fetchWeatherList.Add(currentWeatherDescriptionLabel);
 
             Label airQualityTitleLabel = new Label();
             airQualityTitleLabel.Text = "Качество ветра";
@@ -132,28 +69,25 @@ public partial class MainPage : ContentPage
 
             Label airQualityLabel = new Label();
             string quality = string.Empty;
-            switch (api.current.AirQuality.UsEpaIndex)
+
+            quality = api.current.AirQuality.UsEpaIndex switch
             {
-                case 1:
-                    quality = "Отличное";
-                    break;
-                case 2:
-                    quality = "Умеренное";
-                    break;
-                case 3:
-                    quality = "Опасный для чувствительной группы людей";
-                    break;
-                case 4:
-                    quality = "Опасный для людей";
-                    break;
-                case 5:
-                    quality = "Очень опасный для людей";
-                    break;
-                case 6:
-                    quality = "Смертельный";
-                    break;
-            }
-            airQualityLabel.Text = $"Окись углерода: {api.current.AirQuality.Co}\nОксид азота: {api.current.AirQuality.No2}\nОзон: {api.current.AirQuality.O3}\nОксид серы: {api.current.AirQuality.So2}\nPm25: {api.current.AirQuality.Pm25}\nPm10: {api.current.AirQuality.Pm10}\nКачество воздуха: {quality}";
+                1 => "Отличное",
+                2 => "Умеренное",
+                3 => "Опасный для чувствительной группы людей",
+                4 => "Опасный для людей",
+                5 => "Очень опасный для людей",
+                6 => "Смертельный",
+                _ => "Неизвестный"
+            };
+
+            airQualityLabel.Text = $"Окись углерода: {api.current.AirQuality.Co} CO\n" +
+                $"Оксид азота: {api.current.AirQuality.No2} No2\n" +
+                $"Озон: {api.current.AirQuality.O3} O3\n" +
+                $"Оксид серы: {api.current.AirQuality.So2} So2\n" +
+                $"Pm25: {api.current.AirQuality.Pm25}\n" +
+                $"Pm10: {api.current.AirQuality.Pm10}\n" +
+                $"Качество воздуха: {quality}";
             fetchWeatherList.Add(airQualityLabel);
 
             Label forecastTitle = new Label();
@@ -163,17 +97,33 @@ public partial class MainPage : ContentPage
 
             for (int i = 0; i < api.forecast.Forecastday.Count; i++)
             {
+                int currentIndexDate = i + 1; 
+                string forecastDate = currentIndexDate switch
+                {
+                    1 => "Сегодня",
+                    2 => "Завтра",
+                    3 => "Послезавтра",
+                    4 => "На 3 день",
+                    5 => "На 4 день",
+                    6 => "На 5 день",
+                    7 => "На 6 день",
+                    8 => "На 7 день",
+                    9 => "На 8 день",
+                    10 => "На 9 день",
+                    _ => "Неизвестный прогноз",
+                };
                 Label dateLabel = new Label();
-                dateLabel.Text = $"Дата: {api.forecast.Forecastday[i].Date}";
+                dateLabel.Text = $"{forecastDate}: {api.forecast.Forecastday[i].Date}";
                 fetchWeatherList.Add(dateLabel);
 
                 Label allInfoLabel = new Label();
-                allInfoLabel.Text = $"Максимальные предпологаемые градусы в цельсиях: {api.forecast.Forecastday[i].Day.MaxtempC}\n" +
-                    $"Максимальные предпологаемые градусы в фаренгейтах: {api.forecast.Forecastday[i].Day.MaxtempF}\n" +
-                    $"Минимальные предполагаемые градусы в цельсиях: {api.forecast.Forecastday[i].Day.MintempC}\n" +
-                    $"Минимальные предполагаемые градусы в фаренгейтах: {api.forecast.Forecastday[i].Day.MintempF}\n" +
-                    $"Средняя температура в цельсиях: {api.forecast.Forecastday[i].Day.AvgtempC}\n" +
-                    $"Средняя температура в фаренгейтах: {api.forecast.Forecastday[i].Day.AvgtempF}\n" +
+                allInfoLabel.Text = 
+                    $"Макс. возмож. температура в цельсиях: {api.forecast.Forecastday[i].Day.MaxtempC} °C\n" +
+                    $"Макс. возмож. температура в фаренгейтах: {api.forecast.Forecastday[i].Day.MaxtempF} °F\n" +
+                    $"Мин. возмож. температура в цельсиях: {api.forecast.Forecastday[i].Day.MintempC} °C\n" +
+                    $"Мин. возмож. температура в фаренгейтах: {api.forecast.Forecastday[i].Day.MintempF} °F\n" +
+                    $"Сред. температура в цельсиях: {api.forecast.Forecastday[i].Day.AvgtempC} °C\n" +
+                    $"Сред. температура в фаренгейтах: {api.forecast.Forecastday[i].Day.AvgtempF} °F\n" +
                     $"";
                 fetchWeatherList.Add(allInfoLabel);
             }
