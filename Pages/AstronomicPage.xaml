@@ -4,7 +4,7 @@
              x:Class="Weather_App.Pages.AstronomicPage"
              Title="AstronomicPage">
     <VerticalStackLayout>
-        <Label 
+        <Label
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

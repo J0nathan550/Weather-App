@@ -167,6 +167,17 @@ public partial class MainPage : ContentPage
                 qualityOfWindTitle.HorizontalTextAlignment = TextAlignment.Center;    
                 fetchWeatherList.Add(qualityOfWindTitle);
 
+                string qualityForecastDay = api.forecast.Forecastday[i].Day.AirQuality.UsEpaIndex switch
+                {
+                    1 => "Отличное",
+                    2 => "Умеренное",
+                    3 => "Опасный для чувствительной группы людей",
+                    4 => "Опасный для людей",
+                    5 => "Очень опасный для людей",
+                    6 => "Смертельный",
+                    _ => "Неизвестный"
+                };
+
                 Label qualityOfWindDescription = new Label();
                 qualityOfWindDescription.Text = $"Окись углерода: {api.forecast.Forecastday[i].Day.AirQuality.Co}\n" +
                 $"Оксид азота: {api.forecast.Forecastday[i].Day.AirQuality.No2}\n" +
@@ -174,7 +185,7 @@ public partial class MainPage : ContentPage
                 $"Оксид серы: {api.forecast.Forecastday[i].Day.AirQuality.So2}\n" +
                 $"Pm25: {api.forecast.Forecastday[i].Day.AirQuality.Pm25}\n" +
                 $"Pm10: {api.forecast.Forecastday[i].Day.AirQuality.Pm10}\n" +
-                $"Качество воздуха: {quality}";
+                $"Качество воздуха: {qualityForecastDay}";
                 fetchWeatherList.Add(qualityOfWindDescription);
 
                 Label astronomicLabelTitle = new Label();
@@ -200,6 +211,27 @@ public partial class MainPage : ContentPage
 
                 for (int j = 0; j < api.forecast.Forecastday[i].Hour.Count; j++)
                 {
+                    string qualityForecastHour = api.forecast.Forecastday[i].Hour[j].AirQuality.UsEpaIndex switch
+                    {
+                        1 => "Отличное",
+                        2 => "Умеренное",
+                        3 => "Опасный для чувствительной группы людей",
+                        4 => "Опасный для людей",
+                        5 => "Очень опасный для людей",
+                        6 => "Смертельный",
+                        _ => "Неизвестный"
+                    };
+
+                    string uvQualityForecastHour = api.forecast.Forecastday[i].Hour[j].Uv switch
+                    {
+                        double iF when i >= 0 && i <= 2 => $"{iF}. Низкий, Меры защиты не нужны.",
+                        double iF when i >= 3 && i <= 5 => $"{iF}. Умеренный, Необходима небольшая защита.",
+                        double iF when i >= 6 && i <= 7 => $"{iF}. Высокий, Необходима защита используйте солнцезащитные средства.",
+                        double iF when i >= 8 && i <= 10 => $"{iF}. Очень высокий, Необходима усиленная защита используйте солнцезащитные средства, находитесь меньше на улице.",
+                        double iF when i > 10 => $"{iF}. Чрезмерный, Нужна максимальная защита. Обязательно используйте сильные солнцезащитные средства, избегайте нахождения под солнечными лучами.",
+                        _ => "Неизвестный"
+                    };
+
                     Label forecastByHoursDescription = new Label();
                     forecastByHoursDescription.Text = $"Время: {api.forecast.Forecastday[i].Hour[j].Time}\n" +
                     $"Температура в цельсиях: {api.forecast.Forecastday[i].Hour[j].TempC} °C\n" +
@@ -224,7 +256,7 @@ public partial class MainPage : ContentPage
                     $"Общая видимость в (км): {api.forecast.Forecastday[i].Hour[j].VisKm}\n" +
                     $"Общая видимость в (милях): {api.forecast.Forecastday[i].Hour[j].VisMiles}\n" +
                     $"Порыв ветра (км/ч): {api.forecast.Forecastday[i].Hour[j].GustKph} 💨" +
-                    $"Ультрафиолетовый индекс: {uvQuality}";
+                    $"Ультрафиолетовый индекс: {uvQualityForecastHour}";
                     Label labelQualityTitle = new Label();
                     labelQualityTitle.Text = "Качество ветра";
                     labelQualityTitle.HorizontalTextAlignment = TextAlignment.Center;
@@ -236,7 +268,7 @@ public partial class MainPage : ContentPage
                     $"Оксид серы: {api.forecast.Forecastday[i].Hour[j].AirQuality.So2}\n" +
                     $"Pm25: {api.forecast.Forecastday[i].Hour[j].AirQuality.Pm25}\n" +
                     $"Pm10: {api.forecast.Forecastday[i].Hour[j].AirQuality.Pm10}\n" +
-                    $"Качество воздуха: {quality}";
+                    $"Качество воздуха: {qualityForecastHour}";
                     fetchWeatherList.Add(forecastByHoursDescription);
                     fetchWeatherList.Add(labelQualityTitle);
                     fetchWeatherList.Add(labelForecastAirQualityHours);
