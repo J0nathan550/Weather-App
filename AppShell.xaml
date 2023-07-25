@@ -4,15 +4,55 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Weather_App"
-    Shell.FlyoutBehavior="Flyout">
+    xmlns:custom="clr-namespace:Weather_App.Pages"
+    Shell.FlyoutBehavior="Flyout" FlyoutBackgroundColor="#FC7F03" FlyoutVerticalScrollMode="Enabled">
 
     <ShellContent
         Title="Weather App"
+        FlyoutIcon="Resources/Images/cloud_solid.svg"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        Title="Поточна погода"
+        FlyoutIcon="Resources/Images/sun_regular.svg"
+        ContentTemplate="{DataTemplate custom:CurrentWeatherPage}"
+        Route="CurrentWeatherPage" />
+
+    <ShellContent
+        Title="Прогноз погоди"
+        FlyoutIcon="Resources/Images/cloud_sun_solid.svg"
+        ContentTemplate="{DataTemplate custom:ForecastPage}"
+        Route="ForecastPage" />
+
+    <ShellContent
+        Title="Якість воздуху"
+        FlyoutIcon="Resources/Images/wind_solid.svg"
+        ContentTemplate="{DataTemplate custom:AirQualityPage}"
+        Route="AirQualityPage" />
+
+    <ShellContent
+        Title="Астрономічна інформація"
+        FlyoutIcon="Resources/Images/meteor_solid.svg"
+        ContentTemplate="{DataTemplate custom:AstronomicPage}"
+        Route="AstronomicPage" />
+
+    <ShellContent
+        Title="Уся інформація"
+        FlyoutIcon="Resources/Images/calendar_week_solid.svg"
+        ContentTemplate="{DataTemplate custom:AllInfoPage}"
+        Route="AllInfoPage" />
+
+    <ShellContent
+        Title="Налаштування"
+        FlyoutIcon="Resources/Images/gear_solid.svg"
+        ContentTemplate="{DataTemplate custom:SettingsPage}"
+        Route="SettingsPage" />
+
     <ShellContent
         Title="Автор"
-        ContentTemplate="{DataTemplate local:Author}"
+        FlyoutIcon="Resources/Images/user_solid.svg"
+        ContentTemplate="{DataTemplate custom:AuthorPage}"
         Route="Author" />
 
 </Shell>

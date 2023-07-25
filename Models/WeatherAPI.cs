@@ -309,18 +309,6 @@ namespace Weather_App.Models
             [JsonProperty("feelslike_f")]
             public double FeelslikeF;
 
-            [JsonProperty("windchill_c")]
-            public double WindchillC;
-
-            [JsonProperty("windchill_f")]
-            public double WindchillF;
-
-            [JsonProperty("heatindex_c")]
-            public double HeatindexC;
-
-            [JsonProperty("heatindex_f")]
-            public double HeatindexF;
-
             [JsonProperty("dewpoint_c")]
             public double DewpointC;
 
