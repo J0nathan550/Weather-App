@@ -2,11 +2,61 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.SettingsPage"
-             Title="SettingsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <VerticalStackLayout Spacing="10">
+            <Label Margin="0,10,0,0" Text="Налаштування" HorizontalTextAlignment="Center" FontSize="25"></Label>
+            <Entry Margin="15,0,0,0" x:Name="citySearchBar" WidthRequest="375" HorizontalOptions="Start" Placeholder="Шукати інформацію у місті: " PlaceholderColor="DarkGray"></Entry>
+            <HorizontalStackLayout Margin="6,0,0,0">
+                <Switch x:Name="switchSaveBackground" ThumbColor="DarkOrange" HorizontalOptions="Start"></Switch>
+                <Label Text="Зберігати останню інформацію о погоді" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            </HorizontalStackLayout>
+            <Grid Margin="15,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Мова додатку:" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                <Picker x:Name="languagePicker" Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Ukrainian</x:String>
+                            <x:String>English</x:String>
+                            <x:String>Italian</x:String>
+                            <x:String>German</x:String>
+                            <x:String>Turkish</x:String>
+                            <x:String>Spanish</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Grid Margin="15,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Завантажити прогноз на днів уперед:" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                <Picker x:Name="loadInfoPicker" Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                            <x:String>7</x:String>
+                            <x:String>8</x:String>
+                            <x:String>9</x:String>
+                            <x:String>10</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+        </VerticalStackLayout>
+        <Button Clicked="SaveButton_Clicked" Grid.Row="1" CornerRadius="0" Text="Зберігти"/>
+    </Grid>
 </ContentPage>

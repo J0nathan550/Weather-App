@@ -2,11 +2,179 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.CurrentWeatherPage"
-             Title="CurrentWeatherPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="">
+    <ListView IsEnabled="False" RowHeight="1000" SelectionMode="None"  x:Name="mainView" IsPullToRefreshEnabled="True" Refreshing="ListView_Refreshing">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <VerticalStackLayout Padding="10" Spacing="15">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Останнє оновлення погоди: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.LastUpdated}" FontSize="Subtitle" />
+                                        <Span Text="   🕛" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Температура: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.TempC}" FontSize="Subtitle" />
+                                        <Span Text="°C 🌡️" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Температура: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.TempF}" FontSize="Subtitle" />
+                                        <Span Text="°F 🌡️" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Поточна погода: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.Condition.Text}" FontSize="Subtitle" />
+                                        <Span Text=" 🌤️" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Вітер: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.WindKph}" FontSize="Subtitle" />
+                                        <Span Text=" км/год 💨" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Вітер: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.WindMph}" FontSize="Subtitle" />
+                                        <Span Text=" миль/год 💨" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Градус вітру: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.WindDegree}" FontSize="Subtitle" />
+                                        <Span Text="° 🧭" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Напрямок вітру: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.WindDir}" FontSize="Subtitle" />
+                                        <Span Text=" 🧭" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Атмосферний тиск (Ртутного стовпа): " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.PressureIn}" FontSize="Subtitle" />
+                                        <Span Text=" 🫠" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Осад (Ртутного Стовпа): " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.PrecipIn}" FontSize="Subtitle" />
+                                        <Span Text=" ☔" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Вологість: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.Humidity}" FontSize="Subtitle" />
+                                        <Span Text=" 💦" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Хмарність: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.Cloud}" FontSize="Subtitle" />
+                                        <Span Text=" ☁️" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Відчувається градусів: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.FeelslikeC}" FontSize="Subtitle" />
+                                        <Span Text="°C 🌡️" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Відчувається градусів: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.FeelslikeF}" FontSize="Subtitle" />
+                                        <Span Text="°F 🌡️" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Загальна видимість: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.VisKm}" FontSize="Subtitle" />
+                                        <Span Text=" км 🚇" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Загальна видимість: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.VisMiles}" FontSize="Subtitle" />
+                                        <Span Text=" милях 🚇" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Ультрафиолетовый индекс: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.Uv}" FontSize="Subtitle" />
+                                        <Span Text=" ⛱️" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Порив вітру (км/год): " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.GustKph}" FontSize="Subtitle" />
+                                        <Span Text=" 💨" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

@@ -4,55 +4,69 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Weather_App"
-    xmlns:custom="clr-namespace:Weather_App.Pages"
-    Shell.FlyoutBehavior="Flyout" FlyoutBackgroundColor="#FC7F03" FlyoutVerticalScrollMode="Enabled">
+    xmlns:custom="clr-namespace:Weather_App.Pages" >
 
-    <ShellContent
-        Title="Weather App"
-        FlyoutIcon="Resources/Images/cloud_solid.svg"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Погода" Icon="Resources/Images/cloud_solid.svg">
 
-    <ShellContent
-        Title="Поточна погода"
-        FlyoutIcon="Resources/Images/sun_regular.svg"
-        ContentTemplate="{DataTemplate custom:CurrentWeatherPage}"
-        Route="CurrentWeatherPage" />
+            <ShellContent
+            Title="Test First Page Without ListView"
+            ContentTemplate="{DataTemplate custom:TestFirstWithoutListViewPage}"
+            Route="TestFirstWithoutListViewPage" />
 
-    <ShellContent
-        Title="Прогноз погоди"
-        FlyoutIcon="Resources/Images/cloud_sun_solid.svg"
-        ContentTemplate="{DataTemplate custom:ForecastPage}"
-        Route="ForecastPage" />
+            <ShellContent
+            Title="Test Second Page Without ListView"
+            ContentTemplate="{DataTemplate custom:SecondPageWithoutListView}"
+            Route="SecondPageWithoutListView" />
 
-    <ShellContent
-        Title="Якість воздуху"
-        FlyoutIcon="Resources/Images/wind_solid.svg"
-        ContentTemplate="{DataTemplate custom:AirQualityPage}"
-        Route="AirQualityPage" />
+            <ShellContent
+            Title="Інформація про місто"
+            ContentTemplate="{DataTemplate custom:InformationAboutCityPage}"
+            Route="InformationAboutCityPage" />
 
-    <ShellContent
-        Title="Астрономічна інформація"
-        FlyoutIcon="Resources/Images/meteor_solid.svg"
-        ContentTemplate="{DataTemplate custom:AstronomicPage}"
-        Route="AstronomicPage" />
+            <ShellContent
+            Title="Поточна погода"
+            ContentTemplate="{DataTemplate custom:CurrentWeatherPage}"
+            Route="CurrentWeatherPage" />
 
-    <ShellContent
-        Title="Уся інформація"
-        FlyoutIcon="Resources/Images/calendar_week_solid.svg"
-        ContentTemplate="{DataTemplate custom:AllInfoPage}"
-        Route="AllInfoPage" />
+            <ShellContent
+            Title="Прогноз погоди"
+            ContentTemplate="{DataTemplate custom:ForecastPage}"
+            Route="ForecastPage" />
 
-    <ShellContent
-        Title="Налаштування"
-        FlyoutIcon="Resources/Images/gear_solid.svg"
-        ContentTemplate="{DataTemplate custom:SettingsPage}"
-        Route="SettingsPage" />
+            <ShellContent
+            Title="Якість воздуху"
+            ContentTemplate="{DataTemplate custom:AirQualityPage}"
+            Route="AirQualityPage" />
 
-    <ShellContent
-        Title="Автор"
-        FlyoutIcon="Resources/Images/user_solid.svg"
-        ContentTemplate="{DataTemplate custom:AuthorPage}"
-        Route="Author" />
+            <ShellContent
+            Title="Астрономічна інформація"
+            ContentTemplate="{DataTemplate custom:AstronomicPage}"
+            Route="AstronomicPage" />
+
+            <ShellContent
+            Title="Погодні попередження"
+            ContentTemplate="{DataTemplate custom:WeatherAlertPage}"
+            Route="AstronomicPage" />
+
+            <ShellContent
+            Title="Уся інформація"
+            ContentTemplate="{DataTemplate custom:AllInfoPage}"
+            Route="AllInfoPage" />
+        </Tab>
+        <Tab Icon="Resources/Images/gear_solid.svg" Title="Налаштування">
+            <ShellContent
+                Title="Налаштування"
+                ContentTemplate="{DataTemplate custom:SettingsPage}"
+                Route="SettingsPage" />
+        </Tab>
+        <Tab Icon="Resources/Images/user_solid.svg" Title="Автор">
+            <ShellContent
+                Title="Автор"
+                ContentTemplate="{DataTemplate custom:AuthorPage}"
+                Route="Author" />
+        </Tab>
+    </TabBar>
+
 
 </Shell>

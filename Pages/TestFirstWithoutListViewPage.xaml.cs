@@ -3,15 +3,15 @@ using Weather_App.Models;
 
 namespace Weather_App.Pages;
 
-public partial class ForecastPage : ContentPage
+public partial class TestFirstWithoutListViewPage : ContentPage
 {
-    //private List<WeatherAPI.Forecastday> weatherAPIList = new List<WeatherAPI.Forecastday>();
     private Settings settings = new Settings();
-    public ForecastPage()
-    {
-        InitializeComponent();
+	public TestFirstWithoutListViewPage()
+	{
+		InitializeComponent();
         LoadInfo();
     }
+
     private async void LoadInfo()
     {
         HttpClient client = new HttpClient();
@@ -191,11 +191,9 @@ public partial class ForecastPage : ContentPage
             }
         }
     }
-
     private void Button_Clicked(object sender, EventArgs e)
     {
-        Label label = new Label();
-        label.Text = "Hello World";
-        fetchWeatherList.Add(label);
+        fetchWeatherList.Clear();
+        LoadInfo();
     }
 }

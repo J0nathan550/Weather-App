@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using Weather_App.Models;
 
 namespace Weather_App;
 public static class MauiProgram
