@@ -20,6 +20,10 @@ public partial class AirQualityPage : ContentPage
     {
         try
         {
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.IsRefreshing = true;
+            });
             HttpClient client = new HttpClient();
             settings = Utils.LoadSettingsData(settings);
             if (settings == null || string.IsNullOrEmpty(settings.City) || settings.LoadDays == 0)
@@ -30,7 +34,11 @@ public partial class AirQualityPage : ContentPage
             string json = await client.GetStringAsync($"https://api.weatherapi.com/v1/current.json?key={Utils.apiKey}&q={settings.City}&aqi=yes");
             WeatherAPI api = JsonConvert.DeserializeObject<WeatherAPI>(json);
             weatherAPIList.Add(new WeatherAPI() { current = api.current });
-            mainView.ItemsSource = weatherAPIList;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.ItemsSource = weatherAPIList;
+                mainView.IsRefreshing = false;
+            });
         }
         catch (Exception ex)
         {
@@ -51,7 +59,10 @@ public partial class AirQualityPage : ContentPage
         try
         {
             weatherAPIList.Clear();
-            mainView.ItemsSource = null;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.ItemsSource = null;
+            });
             HttpClient client = new HttpClient();
             settings = Utils.LoadSettingsData(settings);
             if (settings == null || string.IsNullOrEmpty(settings.City) || settings.LoadDays == 0)
@@ -62,11 +73,20 @@ public partial class AirQualityPage : ContentPage
             string json = await client.GetStringAsync($"https://api.weatherapi.com/v1/current.json?key={Utils.apiKey}&q={settings.City}&aqi=yes");
             WeatherAPI api = JsonConvert.DeserializeObject<WeatherAPI>(json);
             weatherAPIList.Add(new WeatherAPI() { current = api.current });
-            mainView.ItemsSource = weatherAPIList;
-            mainView.IsRefreshing = false;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.ItemsSource = weatherAPIList;
+                mainView.IsRefreshing = false;
+            });
         }
         catch (Exception ex)
         {
+            weatherAPIList.Clear();
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.IsRefreshing = false;
+                mainView.ItemsSource = null;
+            });
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             string text = ex.Message;

@@ -1,7 +1,5 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
-using Microsoft.Maui.Controls.Maps;
-using Microsoft.Maui.Maps;
 using Newtonsoft.Json;
 using Weather_App.Models;
 
@@ -22,36 +20,29 @@ public partial class InformationAboutCityPage : ContentPage
     {
         try
         {
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.IsRefreshing = true;
+            });
             HttpClient client = new HttpClient();
             settings = Utils.LoadSettingsData(settings);
-            if (settings == null || string.IsNullOrEmpty(settings.City) || settings.LoadDays == 0)
-            {
-                // show error that we have no paramaters that we didn't defined in settings.
-                return;
-            }
             string json = await client.GetStringAsync($"https://api.weatherapi.com/v1/current.json?key={Utils.apiKey}&q={settings.City}&aqi=no");
             WeatherAPI api = JsonConvert.DeserializeObject<WeatherAPI>(json);
             weatherAPIList.Add(new WeatherAPI() { location = api.location });
-            Pin pin = new Pin()
+            await Dispatcher.DispatchAsync(() =>
             {
-                Label = api.location.Name,
-                Location = new Location()
-                {
-                    Latitude = api.location.Lat,
-                    Longitude = api.location.Lon
-                },
-            };
-            Location location = new Location(api.location.Lat, api.location.Lon);
-            MapSpan mapSpan = new MapSpan(location, 0.01, 0.01);
-            map.MoveToRegion(mapSpan);
-            map.Pins.Add(pin);
-            mainView.ItemsSource = weatherAPIList;
+                mainView.ItemsSource = weatherAPIList;
+                mainView.IsRefreshing = false;
+            });
         }
         catch (Exception ex)
         {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                mainView.IsRefreshing = false;
+                mainView.ItemsSource = null;
+            });
             weatherAPIList.Clear();
-            mainView.IsRefreshing = false;
-            mainView.ItemsSource = null;
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             string text = ex.Message;
@@ -68,39 +59,29 @@ public partial class InformationAboutCityPage : ContentPage
         try
         {
             weatherAPIList.Clear();
-            mainView.ItemsSource = null;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.ItemsSource = null;
+            });
             HttpClient client = new HttpClient();
             settings = Utils.LoadSettingsData(settings);
-            if (settings == null || string.IsNullOrEmpty(settings.City) || settings.LoadDays == 0)
-            {
-                // show error that we have no paramaters that we didn't defined in settings.
-                return;
-            }
             string json = await client.GetStringAsync($"https://api.weatherapi.com/v1/current.json?key={Utils.apiKey}&q={settings.City}&aqi=no");
             WeatherAPI api = JsonConvert.DeserializeObject<WeatherAPI>(json);
             weatherAPIList.Add(new WeatherAPI() { location = api.location });
-            map.Pins.Clear();
-            Pin pin = new Pin()
+            await Dispatcher.DispatchAsync(() =>
             {
-                Label = api.location.Name,
-                Location = new Location()
-                {
-                    Latitude = api.location.Lat,
-                    Longitude = api.location.Lon
-                },
-            };
-            Location location = new Location(api.location.Lat, api.location.Lon);
-            MapSpan mapSpan = new MapSpan(location, 0.01, 0.01);
-            map.MoveToRegion(mapSpan);
-            map.Pins.Add(pin);
-            mainView.ItemsSource = weatherAPIList;
-            mainView.IsRefreshing = false;
+                mainView.ItemsSource = weatherAPIList;
+                mainView.IsRefreshing = false;
+            });
         }
         catch (Exception ex)
         {
             weatherAPIList.Clear();
-            mainView.IsRefreshing = false;
-            mainView.ItemsSource = null;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.IsRefreshing = false;
+                mainView.ItemsSource = null;
+            });
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             string text = ex.Message;

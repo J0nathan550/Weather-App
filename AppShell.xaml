@@ -5,59 +5,93 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Weather_App"
     xmlns:custom="clr-namespace:Weather_App.Pages" 
-    >
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    FlyoutBehavior="Flyout" FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray600}}">
 
-    <TabBar>
-        <Tab Title="Погода" Icon="Resources/Images/cloud_solid.svg">
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="25, *" Padding="10,20,0,0">
+                <Image Aspect="AspectFit" Source="{Binding FlyoutIcon}">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+                <Label Margin="10,0,0,0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding Title}" TextColor="White" FontSize="16"></Label>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
 
-            <ShellContent
-            Title="Інформація про місто"
-            ContentTemplate="{DataTemplate custom:InformationAboutCityPage}"
-            Route="InformationAboutCityPage" />
+    <Shell.FlyoutHeader>
+        <Frame CornerRadius="0" Background="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Gray900}}" BorderColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Gray900}}">
+            <VerticalStackLayout>
+                <Image Source="cloud_solid" WidthRequest="50">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+                <Label HorizontalOptions="Center" TextColor="{StaticResource White}" FontAttributes="Bold" FontSize="Large" Text="Weather App"/>
+            </VerticalStackLayout>
+        </Frame>
+    </Shell.FlyoutHeader>
 
-            <ShellContent
-            Title="Поточна погода"
-            ContentTemplate="{DataTemplate custom:CurrentWeatherPage}"
-            Route="CurrentWeatherPage" />
+    <Shell.FlyoutFooter>
+        <Frame CornerRadius="0" Background="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Gray900}}" BorderColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Gray900}}">
+            <Label HorizontalOptions="Center" TextColor="{StaticResource White}" FontAttributes="Bold" FontSize="14" Text="Version: 1.0.0"/>
+        </Frame>
+    </Shell.FlyoutFooter>
+    
+    <ShellContent
+        Title="Інформація про місто"
+        FlyoutIcon="info_solid"
+        ContentTemplate="{DataTemplate custom:InformationAboutCityPage}"
+        Route="InformationAboutCityPage" />
 
-            <ShellContent
-            Title="Прогноз погоди"
-            ContentTemplate="{DataTemplate custom:ForecastPage}"
-            Route="ForecastPage" />
+    <ShellContent
+        Title="Поточна погода"
+        FlyoutIcon="cloud_solid"
+        ContentTemplate="{DataTemplate custom:CurrentWeatherPage}"
+        Route="CurrentWeatherPage" />
 
-            <ShellContent
-            Title="Якість воздуху"
-            ContentTemplate="{DataTemplate custom:AirQualityPage}"
-            Route="AirQualityPage" />
+    <ShellContent
+        Title="Прогноз погоди"
+        FlyoutIcon="sun_regular"
+        ContentTemplate="{DataTemplate custom:ForecastPage}"
+        Route="ForecastPage" />
 
-            <ShellContent
-            Title="Астрономічна інформація"
-            ContentTemplate="{DataTemplate custom:AstronomicPage}"
-            Route="AstronomicPage" />
+    <ShellContent
+        Title="Якість воздуху"
+        FlyoutIcon="wind_solid"
+        ContentTemplate="{DataTemplate custom:AirQualityPage}"
+        Route="AirQualityPage" />
 
-            <ShellContent
-            Title="Погодні попередження"
-            ContentTemplate="{DataTemplate custom:WeatherAlertPage}"
-            Route="AstronomicPage" />
+    <ShellContent
+        Title="Астрономічна інформація"
+        FlyoutIcon="meteor_solid"
+        ContentTemplate="{DataTemplate custom:AstronomicPage}"
+        Route="AstronomicPage" />
 
-            <ShellContent
-            Title="Уся інформація"
-            ContentTemplate="{DataTemplate custom:AllInfoPage}"
-            Route="AllInfoPage" />
-        </Tab>
-        <Tab Icon="Resources/Images/gear_solid.svg" Title="Налаштування">
-            <ShellContent
-                Title="Налаштування"
-                ContentTemplate="{DataTemplate custom:SettingsPage}"
-                Route="SettingsPage" />
-        </Tab>
-        <Tab Icon="Resources/Images/user_solid.svg" Title="Автор">
-            <ShellContent
-                Title="Автор"
-                ContentTemplate="{DataTemplate custom:AuthorPage}"
-                Route="Author" />
-        </Tab>
-    </TabBar>
+    <ShellContent
+        Title="Погодні попередження"
+        FlyoutIcon="triangle_exclamation_solid"
+        ContentTemplate="{DataTemplate custom:WeatherAlertPage}"
+        Route="WeatherAlertPage" />
 
+    <ShellContent
+        Title="Уся інформація"
+        FlyoutIcon="circle_question_solid"
+        ContentTemplate="{DataTemplate custom:AllInfoPage}"
+        Route="AllInfoPage" />
+
+    <ShellContent
+        Title="Налаштування"
+        FlyoutIcon="gear_solid"
+        ContentTemplate="{DataTemplate custom:SettingsPage}"
+        Route="SettingsPage" />
+
+    <ShellContent
+        Title="Автор"
+        FlyoutIcon="user_solid"
+        ContentTemplate="{DataTemplate custom:AuthorPage}"
+        Route="Author" />
 
 </Shell>

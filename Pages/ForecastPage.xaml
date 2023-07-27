@@ -2,7 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.ForecastPage"
-             Title="">
-    <VerticalStackLayout x:Name="testLayout" Margin="15">
-    </VerticalStackLayout>
+             Title="Прогноз погоди">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView  ZIndex="-1" Grid.Row="0" IsPullToRefreshEnabled="True" IsEnabled="False" SelectionMode="None" Refreshing="updateList_Refreshing" x:Name="updateList"/>
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout x:Name="testLayout" Margin="15">
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

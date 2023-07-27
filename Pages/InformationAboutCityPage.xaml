@@ -2,13 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.InformationAboutCityPage"
-               xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
-             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
-             Title="">
+             Title="Інформація про місто">
     <Grid>
-        <VerticalStackLayout>
-            
-        <ListView IsEnabled="False" RowHeight="300" SelectionMode="None"  x:Name="mainView" IsPullToRefreshEnabled="True" Refreshing="ListView_Refreshing">
+        <ListView IsEnabled="False" RowHeight="1000" SelectionMode="None"  x:Name="mainView" IsPullToRefreshEnabled="True" Refreshing="ListView_Refreshing">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -44,24 +40,6 @@
                                 <Label>
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="Широта на Google Maps: " FontSize="Subtitle" />
-                                            <Span Text="{Binding location.Lat}" FontSize="Subtitle" />
-                                            <Span Text="° 📐" FontSize="Subtitle" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Висота на Google Maps: " FontSize="Subtitle" />
-                                            <Span Text="{Binding location.Lon}" FontSize="Subtitle" />
-                                            <Span Text="° 📐" FontSize="Subtitle" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
                                             <Span Text="Часова Зона ID: " FontSize="Subtitle" />
                                             <Span Text="{Binding location.TzId}" FontSize="Subtitle" />
                                             <Span Text=" ⏱️" FontSize="Subtitle" />
@@ -77,17 +55,11 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Місто на Google Maps:"></Label>
                             </VerticalStackLayout>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-            <Frame HeightRequest="250">
-                <maps:Map  x:Name="map" IsShowingUser="True" IsTrafficEnabled="True" IsScrollEnabled="True" IsZoomEnabled="True">
-                </maps:Map>
-            </Frame>
-        </VerticalStackLayout>
     </Grid>
 </ContentPage>

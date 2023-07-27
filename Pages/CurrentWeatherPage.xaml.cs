@@ -20,21 +20,29 @@ public partial class CurrentWeatherPage : ContentPage
     {
         try
         {
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.IsRefreshing = true;
+            });
             HttpClient client = new HttpClient();
             settings = Utils.LoadSettingsData(settings);
-            if (settings == null || string.IsNullOrEmpty(settings.City) || settings.LoadDays == 0)
-            {
-                // show error that we have no paramaters that we didn't defined in settings.
-                return;
-            }
             string json = await client.GetStringAsync($"https://api.weatherapi.com/v1/current.json?key={Utils.apiKey}&q={settings.City}&aqi=no");
             WeatherAPI api = JsonConvert.DeserializeObject<WeatherAPI>(json);
             weatherAPIList.Add(new WeatherAPI() { current = api.current });
-            mainView.ItemsSource = weatherAPIList;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.ItemsSource = weatherAPIList;
+                mainView.IsRefreshing = false;
+            });
         }
         catch (Exception ex)
         {
-            mainView.IsRefreshing = false;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.IsRefreshing = false;
+                mainView.ItemsSource = null;
+            });
+            weatherAPIList.Clear();
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             string text = ex.Message;
@@ -52,25 +60,29 @@ public partial class CurrentWeatherPage : ContentPage
         try
         {
             weatherAPIList.Clear();
-            mainView.ItemsSource = null;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.ItemsSource = null;
+            });
+
             HttpClient client = new HttpClient();
             settings = Utils.LoadSettingsData(settings);
-            if (settings == null || string.IsNullOrEmpty(settings.City) || settings.LoadDays == 0)
-            {
-                // show error that we have no paramaters that we didn't defined in settings.
-                return;
-            }
             string json = await client.GetStringAsync($"https://api.weatherapi.com/v1/current.json?key={Utils.apiKey}&q={settings.City}&aqi=no");
             WeatherAPI api = JsonConvert.DeserializeObject<WeatherAPI>(json);
             weatherAPIList.Add(new WeatherAPI() { current = api.current });
-            mainView.ItemsSource = weatherAPIList;
-            mainView.IsRefreshing = false;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.ItemsSource = weatherAPIList;
+                mainView.IsRefreshing = false;
+            });
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-
-            mainView.IsRefreshing = false;
-            mainView.ItemsSource = null;
+            await Dispatcher.DispatchAsync(() =>
+            {
+                mainView.IsRefreshing = false;
+                mainView.ItemsSource = null;
+            });
             weatherAPIList.Clear();
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 

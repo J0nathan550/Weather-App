@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.AirQualityPage"
-             Title="">
+             Title="Якість воздуху">
     <ListView IsEnabled="False" RowHeight="1000" SelectionMode="None"  x:Name="mainView" IsPullToRefreshEnabled="True" Refreshing="ListView_Refreshing">
         <ListView.ItemTemplate>
             <DataTemplate>

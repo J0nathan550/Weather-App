@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.CurrentWeatherPage"
-             Title="">
+             Title="Поточна погода">
     <ListView IsEnabled="False" RowHeight="1000" SelectionMode="None"  x:Name="mainView" IsPullToRefreshEnabled="True" Refreshing="ListView_Refreshing">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <Grid>
                         <VerticalStackLayout Padding="10" Spacing="15">
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Останнє оновлення погоди: " FontSize="Subtitle" />
@@ -18,7 +18,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Температура: " FontSize="Subtitle" />
@@ -27,7 +27,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Температура: " FontSize="Subtitle" />
@@ -36,7 +36,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Поточна погода: " FontSize="Subtitle" />
@@ -45,7 +45,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Вітер: " FontSize="Subtitle" />
@@ -54,7 +54,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Вітер: " FontSize="Subtitle" />
@@ -63,7 +63,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Градус вітру: " FontSize="Subtitle" />
@@ -72,7 +72,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Напрямок вітру: " FontSize="Subtitle" />
@@ -81,7 +81,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Атмосферний тиск (Ртутного стовпа): " FontSize="Subtitle" />
@@ -90,7 +90,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Осад (Ртутного Стовпа): " FontSize="Subtitle" />
@@ -99,7 +99,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Вологість: " FontSize="Subtitle" />
@@ -108,7 +108,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Хмарність: " FontSize="Subtitle" />
@@ -117,7 +117,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Відчувається градусів: " FontSize="Subtitle" />
@@ -126,7 +126,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Відчувається градусів: " FontSize="Subtitle" />
@@ -135,7 +135,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Загальна видимість: " FontSize="Subtitle" />
@@ -144,7 +144,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Загальна видимість: " FontSize="Subtitle" />
@@ -153,7 +153,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Ультрафиолетовый индекс: " FontSize="Subtitle" />
@@ -162,7 +162,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Порив вітру (км/год): " FontSize="Subtitle" />

@@ -2,17 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.AuthorPage"
-             Title="">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Black}}"
+             Title="Автори додатку">
     <ScrollView Margin="10">
         <VerticalStackLayout Spacing="25">
             <Image Source="Resources/Images/brenntkopf"></Image>
-            <Frame>
-                <VerticalStackLayout Spacing="10">   
-                    <Label Text="Розроблено для Brenntkopf Studio" FontSize="18" HorizontalTextAlignment="Center"></Label>
-                    <Label Text="Програміст J0nathan550" FontSize="16" HorizontalTextAlignment="Center"></Label>
-                    <Label Text="Наші посилання: " FontSize="15" HorizontalTextAlignment="Center"></Label>
-                    <Button Clicked="TelegramButtonClicked" Text="Telegram (Brenntkopf Studio)" FontAttributes="Bold"></Button>
-                    <Button Clicked="YouTubeButtonClicked" Text="YouTube (Brenntkopf Studio)" FontAttributes="Bold"></Button>
+            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" BorderColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}">
+                <VerticalStackLayout Spacing="10">
+                    <Label FontAttributes="Bold" TextColor="{StaticResource White}" Text="Розроблено для Brenntkopf Studio" FontSize="18" HorizontalTextAlignment="Center"></Label>
+                    <Label FontAttributes="Bold" TextColor="{StaticResource White}" Text="Програміст J0nathan550" FontSize="16" HorizontalTextAlignment="Center"></Label>
+                    <Label FontAttributes="Bold" TextColor="{StaticResource White}" Text="Наші посилання: " FontSize="15" HorizontalTextAlignment="Center"></Label>
+                    <Button BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" BorderColor="White" BorderWidth="1" TextColor="{StaticResource White}"  Clicked="TelegramButtonClicked" Text="Telegram (Brenntkopf Studio)" FontAttributes="Bold"></Button>
+                    <Button BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" BorderColor="White" BorderWidth="1" TextColor="{StaticResource White}"  Clicked="YouTubeButtonClicked" Text="YouTube (Brenntkopf Studio)" FontAttributes="Bold"></Button>
                 </VerticalStackLayout>
             </Frame>
             <Grid>
@@ -21,12 +22,8 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Frame>
-                    <Label HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="Version: 1.0.0"/>
-                </Frame>
-                <Frame Grid.Column="2">
-                    <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="weatherapi.com"/>
-                </Frame>
+                <Button TextColor="White" BorderWidth="1" BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" BorderColor="White"/>
+                <Button Grid.Column="2" TextColor="White" BorderWidth="1" BorderColor="White" BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
