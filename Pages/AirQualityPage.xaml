@@ -3,10 +3,79 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.AirQualityPage"
              Title="">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ListView IsEnabled="False" RowHeight="1000" SelectionMode="None"  x:Name="mainView" IsPullToRefreshEnabled="True" Refreshing="ListView_Refreshing">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <VerticalStackLayout Padding="10" Spacing="15">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Монооксид вуглецю: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.AirQuality.Co}" FontSize="Subtitle" />
+                                        <Span Text="" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Оксид азоту: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.AirQuality.No2}" FontSize="Subtitle" />
+                                        <Span Text="" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Озон: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.AirQuality.O3}" FontSize="Subtitle" />
+                                        <Span Text="" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Оксид серы: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.AirQuality.So2}" FontSize="Subtitle" />
+                                        <Span Text="" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Тверді частинки (25): " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.AirQuality.Pm25}" FontSize="Subtitle" />
+                                        <Span Text="" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Тверді частинки (10): " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.AirQuality.Pm10}" FontSize="Subtitle" />
+                                        <Span Text="" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Якість воздуху: " FontSize="Subtitle" />
+                                        <Span Text="{Binding current.AirQuality.UsEpaIndex}" FontSize="Subtitle" />
+                                        <Span Text="" FontSize="Subtitle" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

@@ -11,10 +11,8 @@ public partial class SettingsPage : ContentPage
     public SettingsPage()
 	{
 		InitializeComponent();
-		Utils.LoadSettingsData(userSettings);
+		userSettings = Utils.LoadSettingsData(userSettings);
 		citySearchBar.Text = userSettings.City;
-		switchSaveBackground.IsToggled = userSettings.SaveInfo;
-		languagePicker.SelectedIndex = userSettings.LanguageIndex;
 		loadInfoPicker.SelectedIndex = userSettings.LoadDays;
     }
 
@@ -23,8 +21,6 @@ public partial class SettingsPage : ContentPage
 		try
 		{
             userSettings.City = citySearchBar.Text;
-            userSettings.SaveInfo = switchSaveBackground.IsToggled;
-			userSettings.LanguageIndex = languagePicker.SelectedIndex;
 			userSettings.LoadDays = loadInfoPicker.SelectedIndex; 
             string json = JsonConvert.SerializeObject(userSettings);
 			File.WriteAllText(Utils.filePath, json);

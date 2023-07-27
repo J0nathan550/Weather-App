@@ -11,29 +11,6 @@
         <VerticalStackLayout Spacing="10">
             <Label Margin="0,10,0,0" Text="Налаштування" HorizontalTextAlignment="Center" FontSize="25"></Label>
             <Entry Margin="15,0,0,0" x:Name="citySearchBar" WidthRequest="375" HorizontalOptions="Start" Placeholder="Шукати інформацію у місті: " PlaceholderColor="DarkGray"></Entry>
-            <HorizontalStackLayout Margin="6,0,0,0">
-                <Switch x:Name="switchSaveBackground" ThumbColor="DarkOrange" HorizontalOptions="Start"></Switch>
-                <Label Text="Зберігати останню інформацію о погоді" VerticalOptions="Center" HorizontalOptions="Center"></Label>
-            </HorizontalStackLayout>
-            <Grid Margin="15,0,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="Мова додатку:" VerticalOptions="Center" HorizontalOptions="Start"></Label>
-                <Picker x:Name="languagePicker" Grid.Column="1">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Ukrainian</x:String>
-                            <x:String>English</x:String>
-                            <x:String>Italian</x:String>
-                            <x:String>German</x:String>
-                            <x:String>Turkish</x:String>
-                            <x:String>Spanish</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-            </Grid>
             <Grid Margin="15,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

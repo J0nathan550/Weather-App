@@ -11,8 +11,8 @@
                     <Label Text="Розроблено для Brenntkopf Studio" FontSize="18" HorizontalTextAlignment="Center"></Label>
                     <Label Text="Програміст J0nathan550" FontSize="16" HorizontalTextAlignment="Center"></Label>
                     <Label Text="Наші посилання: " FontSize="15" HorizontalTextAlignment="Center"></Label>
-                    <Button Text="Telegram (Brenntkopf Studio)" FontAttributes="Bold"></Button>
-                    <Button Text="YouTube (Brenntkopf Studio)" FontAttributes="Bold"></Button>
+                    <Button Clicked="TelegramButtonClicked" Text="Telegram (Brenntkopf Studio)" FontAttributes="Bold"></Button>
+                    <Button Clicked="YouTubeButtonClicked" Text="YouTube (Brenntkopf Studio)" FontAttributes="Bold"></Button>
                 </VerticalStackLayout>
             </Frame>
             <Grid>

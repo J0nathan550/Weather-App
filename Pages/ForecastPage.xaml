@@ -3,12 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather_App.Pages.ForecastPage"
              Title="">
-    <ScrollView Grid.Row="1">
-        <Grid>
-            <Button HeightRequest="50" Clicked="Button_Clicked" Text="Click to add everything"></Button>
-            <VerticalStackLayout x:Name="fetchWeatherList">
-                
-            </VerticalStackLayout>
-        </Grid>
-    </ScrollView>
+    <VerticalStackLayout x:Name="testLayout" Margin="15">
+    </VerticalStackLayout>
 </ContentPage>
