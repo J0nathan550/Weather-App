@@ -1,7 +1,5 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Dispatching;
 using Newtonsoft.Json;
 using Weather_App.Models;
 
@@ -40,36 +38,38 @@ public partial class ForecastPage : ContentPage
 
                 string uvQualityForecast = api.forecast.Forecastday[i].Day.Uv switch
                 {
-                    double iF when iF >= 0 && iF <= 2 => $"{iF}. Низкий, Меры защиты не нужны.",
-                    double iF when iF >= 3 && iF <= 5 => $"{iF}. Умеренный, Необходима небольшая защита.",
-                    double iF when iF >= 6 && iF <= 7 => $"{iF}. Высокий, Необходима защита используйте солнцезащитные средства.",
-                    double iF when iF >= 8 && iF <= 10 => $"{iF}. Очень высокий, Необходима усиленная защита используйте солнцезащитные средства, находитесь меньше на улице.",
-                    double iF when iF > 10 => $"{iF}. Чрезмерный, Нужна максимальная защита. Обязательно используйте сильные солнцезащитные средства, избегайте нахождения под солнечными лучами.",
-                    _ => "Неизвестный"
+                    double iF when iF >= 0 && iF <= 2 => $"{iF}. Низький, Заходи захисту не потрібні.",
+                    double iF when iF >= 3 && iF <= 5 => $"{iF}. Помірний, потрібний невеликий захист.",
+                    double iF when iF >= 6 && iF <= 7 => $"{iF}. Високий, Необхідний захист використовуйте сонцезахисні засоби.",
+                    double iF when iF >= 8 && iF <= 10 => $"{iF}. Дуже високий, Необхідний посилений захист використовуйте сонцезахисні засоби, що менше на вулиці.",
+                    double iF when iF > 10 => $"{iF}. Надмірний, Потрібен максимальний захист. Обов'язково використовуйте сильні сонцезахисні засоби, уникайте знаходження під сонячним промінням.",
+                    _ => "Невідомий"
                 };
+
                 await Dispatcher.DispatchAsync(() =>
                 {
                     Label forecastBasicInfo = new Label();
-                    forecastBasicInfo.Text = $"Макс. возмож. температура в цельсиях: {api.forecast.Forecastday[i].Day.MaxtempC} °C\n" +
-                    $"Макс. возмож. температура в фаренгейтах: {api.forecast.Forecastday[i].Day.MaxtempF} °F\n" +
-                    $"Мин. возмож. температура в цельсиях: {api.forecast.Forecastday[i].Day.MintempC} °C\n" +
-                    $"Мин. возмож. температура в фаренгейтах: {api.forecast.Forecastday[i].Day.MintempF} °F\n" +
-                    $"Сред. температура в цельсиях: {api.forecast.Forecastday[i].Day.AvgtempC} °C\n" +
-                    $"Сред. температура в фаренгейтах: {api.forecast.Forecastday[i].Day.AvgtempF} °F\n" +
-                    $"Макс. ветер в (км/ч): {api.forecast.Forecastday[i].Day.MaxwindKph}\n" +
-                    $"Макс. ветер в (миль/ч): {api.forecast.Forecastday[i].Day.MaxwindMph}\n" +
-                    $"Общее кол-во осадков в (мм): {api.forecast.Forecastday[i].Day.TotalprecipMm}\n" +
-                    $"Общее кол-во осадков в (дюймах):{api.forecast.Forecastday[i].Day.TotalprecipIn}\n" +
-                    $"Общая видимость в (км): {api.forecast.Forecastday[i].Day.AvgvisKm}\n" +
-                    $"Общая видимость в (милях): {api.forecast.Forecastday[i].Day.AvgvisMiles}\n" +
-                    $"Средняя влажность: {api.forecast.Forecastday[i].Day.Avghumidity}\n" +
-                    $"Будет ли дождь: {(api.forecast.Forecastday[i].Day.DailyWillItRain == 1 ? "Да" : "Нет")}\n" +
-                    $"Шанс на дождь: {api.forecast.Forecastday[i].Day.DailyChanceOfRain}%\n" +
-                    $"Будет ли снег: {(api.forecast.Forecastday[i].Day.DailyWillItSnow == 1 ? "Да" : "Нет")}\n" +
-                    $"Шанс на снег: {api.forecast.Forecastday[i].Day.DailyChanceOfSnow}%\n" +
-                    $"Условная погода: {api.forecast.Forecastday[i].Day.Condition.Text}\n" +
-                    $"Ультрафиолетовый индекс: {uvQualityForecast}";
+                    forecastBasicInfo.Text = $"Макс. можл. температура в цельсіях: {api.forecast.Forecastday[i].Day.MaxtempC} °C\n" +
+                    $"Макс. можл. температура у фаренгейтах: {api.forecast.Forecastday[i].Day.MaxtempF} °F\n" +
+                    $"Мін. можл. температура в цельсіях: {api.forecast.Forecastday[i].Day.MintempC} °C\n" +
+                    $"Мін. можл. температура у фаренгейтах: {api.forecast.Forecastday[i].Day.MintempF} °F\n" +
+                    $"Сред. температура в цельсіях: {api.forecast.Forecastday[i].Day.AvgtempC} °C\n" +
+                    $"Сред. температура у фаренгейтах: {api.forecast.Forecastday[i].Day.AvgtempF} °F\n" +
+                    $"Макс. вітер (км/год): {api.forecast.Forecastday[i].Day.MaxwindKph}\n" +
+                    $"Макс. вітер у (миль/год): {api.forecast.Forecastday[i].Day.MaxwindMph}\n" +
+                    $"Загальна кількість опадів в (мм): {api.forecast.Forecastday[i].Day.TotalprecipMm}\n" +
+                    $"Загальна кількість опадів в (дюймах): {api.forecast.Forecastday[i].Day.TotalprecipIn}\n" +
+                    $"Загальна видимість (км): {api.forecast.Forecastday[i].Day.AvgvisKm}\n" +
+                    $"Загальна видимість у (милях): {api.forecast.Forecastday[i].Day.AvgvisMiles}\n" +
+                    $"Середня вологість: {api.forecast.Forecastday[i].Day.Avghumidity}\n" +
+                    $"Чи буде дощ: {(api.forecast.Forecastday[i].Day.DailyWillItRain == 1 ? "Так" : "Ні")}\n" +
+                    $"Шанс на дощ: {api.forecast.Forecastday[i].Day.DailyChanceOfRain}%\n" +
+                    $"Чи буде сніг: {(api.forecast.Forecastday[i].Day.DailyWillItSnow == 1 ? "Так" : "Ні")}\n" +
+                    $"Шанс на сніг: {api.forecast.Forecastday[i].Day.DailyChanceOfSnow}%\n" +
+                    $"Умовна погода: {api.forecast.Forecastday[i].Day.Condition.Text}\n" +
+                    $"Ультрафіолетовий індекс: {uvQualityForecast}";
                     firstFrameLayout = new VerticalStackLayout();
+                    firstFrameLayout.Spacing = 20;
                     Frame mainFrame = new Frame();
                     testLayout.Add(mainFrame);
                     mainFrame.Content = firstFrameLayout;
@@ -81,40 +81,41 @@ public partial class ForecastPage : ContentPage
                 {
                     string uvQualityForecastHour = api.forecast.Forecastday[i].Hour[j].Uv switch
                     {
-                        double iF when iF >= 0 && iF <= 2 => $"{iF}. Низкий, Меры защиты не нужны.",
-                        double iF when iF >= 3 && iF <= 5 => $"{iF}. Умеренный, Необходима небольшая защита.",
-                        double iF when iF >= 6 && iF <= 7 => $"{iF}. Высокий, Необходима защита используйте солнцезащитные средства.",
-                        double iF when iF >= 8 && iF <= 10 => $"{iF}. Очень высокий, Необходима усиленная защита используйте солнцезащитные средства, находитесь меньше на улице.",
-                        double iF when iF > 10 => $"{iF}. Чрезмерный, Нужна максимальная защита. Обязательно используйте сильные солнцезащитные средства, избегайте нахождения под солнечными лучами.",
-                        _ => "Неизвестный"
+                        double iF when iF >= 0 && iF <= 2 => $"{iF}. Низький, Заходи захисту не потрібні.",
+                        double iF when iF >= 3 && iF <= 5 => $"{iF}. Помірний, потрібний невеликий захист.",
+                        double iF when iF >= 6 && iF <= 7 => $"{iF}. Високий, Необхідний захист використовуйте сонцезахисні засоби.",
+                        double iF when iF >= 8 && iF <= 10 => $"{iF}. Дуже високий, Необхідний посилений захист використовуйте сонцезахисні засоби, що менше на вулиці.",
+                        double iF when iF > 10 => $"{iF}. Надмірний, Потрібен максимальний захист. Обов'язково використовуйте сильні сонцезахисні засоби, уникайте знаходження під сонячним промінням.",
+                        _ => "Невідомий"
                     };
+
                     await Dispatcher.DispatchAsync(() =>
                     {
                         Label forecastByHoursDescription = new Label();
                         forecastByHoursDescription.Text = $"Время: {api.forecast.Forecastday[i].Hour[j].Time}\n" +
-                        $"Температура в цельсиях: {api.forecast.Forecastday[i].Hour[j].TempC} °C\n" +
-                        $"Температура в фаренгейте: {api.forecast.Forecastday[i].Hour[j].TempF} °F\n" +
-                        $"Текущая погода: {api.forecast.Forecastday[i].Hour[j].Condition.Text}\n" +
-                        $"Ветер (км/ч): {api.forecast.Forecastday[i].Hour[j].WindKph}\n" +
-                        $"Ветер (миль/ч): {api.forecast.Forecastday[i].Hour[j].WindMph}\n" +
-                        $"Градус ветра: {api.forecast.Forecastday[i].Hour[j].WindDegree}°\n" +
-                        $"Направление ветра: {api.forecast.Forecastday[i].Hour[j].WindDir} ☴\n" +
-                        $"Атмосферное давление (Ртутного Столба): {api.forecast.Forecastday[i].Hour[j].PressureIn}\n" +
-                        $"Осадок (Ртутного Столба): {api.forecast.Forecastday[i].Hour[j].PrecipIn} ↓\n" +
-                        $"Влажность: {api.forecast.Forecastday[i].Hour[j].Humidity} 🜁\n" +
-                        $"Облачность: {api.forecast.Forecastday[i].Hour[j].Cloud} ☁️\n" +
-                        $"Чувствуется градусов в цельсиях как: {api.forecast.Forecastday[i].Hour[j].FeelslikeC} °C\n" +
-                        $"Чувствуется градусов в фаренгейтах как: {api.forecast.Forecastday[i].Hour[j].FeelslikeF} °F\n" +
-                        $"Температура точки росы газа в цельсиях: {api.forecast.Forecastday[i].Hour[j].DewpointC} °F\n" +
-                        $"Температура точки росы газа в фаренгайте: {api.forecast.Forecastday[i].Hour[j].DewpointF} °F\n" +
-                        $"Будет ли дождь: {(api.forecast.Forecastday[i].Day.DailyWillItRain == 1 ? "Да" : "Нет")}\n" +
-                        $"Шанс на дождь: {api.forecast.Forecastday[i].Day.DailyChanceOfRain}%\n" +
-                        $"Будет ли снег: {(api.forecast.Forecastday[i].Day.DailyWillItSnow == 1 ? "Да" : "Нет")}\n" +
-                        $"Шанс на снег: {api.forecast.Forecastday[i].Day.DailyChanceOfSnow}%\n" +
-                        $"Общая видимость в (км): {api.forecast.Forecastday[i].Hour[j].VisKm}\n" +
-                        $"Общая видимость в (милях): {api.forecast.Forecastday[i].Hour[j].VisMiles}\n" +
-                        $"Порыв ветра (км/ч): {api.forecast.Forecastday[i].Hour[j].GustKph} 💨" +
-                        $"Ультрафиолетовый индекс: {uvQualityForecastHour}";
+                        $"Температура у цельсіях: {api.forecast.Forecastday[i].Hour[j].TempC} °C\n" +
+                        $"Температура у фаренгейте: {api.forecast.Forecastday[i].Hour[j].TempF} °F\n" +
+                        $"Поточна погода: {api.forecast.Forecastday[i].Hour[j].Condition.Text}\n" +
+                        $"Вітер (км/год): {api.forecast.Forecastday[i].Hour[j].WindKph}\n" +
+                        $"Вітер (миль/год): {api.forecast.Forecastday[i].Hour[j].WindMph}\n" +
+                        $"Градус вітру: {api.forecast.Forecastday[i].Hour[j].WindDegree}°\n" +
+                        $"Напрямок вітру: {api.forecast.Forecastday[i].Hour[j].WindDir} ☴\n" +
+                        $"Атмосферний тиск (Ртутного Стовпа): {api.forecast.Forecastday[i].Hour[j].PressureIn}\n" +
+                        $"Осад (Ртутного Стовпа): {api.forecast.Forecastday[i].Hour[j].PrecipIn} ↓\n" +
+                        $"Вологість: {api.forecast.Forecastday[i].Hour[j].Humidity} 🜁\n" +
+                        $"Хмарність: {api.forecast.Forecastday[i].Hour[j].Cloud} ☁️\n" +
+                        $"Відчувається градусів у цельсіях як: {api.forecast.Forecastday[i].Hour[j].FeelslikeC} °C\n" +
+                        $"Відчувається градусів у фаренгейтах як: {api.forecast.Forecastday[i].Hour[j].FeelslikeF} °F\n" +
+                        $"Температура точки роси газу в цельсіях: {api.forecast.Forecastday[i].Hour[j].DewpointC} °F\n" +
+                        $"Температура точки роси газу у фаренгайте: {api.forecast.Forecastday[i].Hour[j].DewpointF} °F\n" +
+                        $"Чи буде дощ: {(api.forecast.Forecastday[i].Day.DailyWillItRain == 1 ? "Так" : "Ні")}\n" +
+                        $"Шанс на дощ: {api.forecast.Forecastday[i].Day.DailyChanceOfRain}%\n" +
+                        $"Чи буде сніг: {(api.forecast.Forecastday[i].Day.DailyWillItSnow == 1 ? "Так" : "Ні")}\n" +
+                        $"Шанс на сніг: {api.forecast.Forecastday[i].Day.DailyChanceOfSnow}%\n" +
+                        $"Загальна видимість (км): {api.forecast.Forecastday[i].Hour[j].VisKm}\n" +
+                        $"Загальна видимість у (милях): {api.forecast.Forecastday[i].Hour[j].VisMiles}\n" +
+                        $"Порив вітру (км/год): {api.forecast.Forecastday[i].Hour[j].GustKph} 💨" +
+                        $"Ультрафіолетовий індекс: {uvQualityForecastHour}";
                         Frame secondFrame = new Frame();
                         secondFrame.Content = forecastByHoursDescription;
                         firstFrameLayout.Add(secondFrame);

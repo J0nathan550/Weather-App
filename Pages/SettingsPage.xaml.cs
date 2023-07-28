@@ -13,7 +13,7 @@ public partial class SettingsPage : ContentPage
 		InitializeComponent();
 		userSettings = Utils.LoadSettingsData(userSettings);
 		citySearchBar.Text = userSettings.City;
-		loadInfoPicker.SelectedIndex = userSettings.LoadDays;
+		loadInfoPicker.SelectedIndex = userSettings.LoadDays - 1;
     }
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
@@ -21,7 +21,7 @@ public partial class SettingsPage : ContentPage
 		try
 		{
             userSettings.City = citySearchBar.Text;
-			userSettings.LoadDays = loadInfoPicker.SelectedIndex; 
+			userSettings.LoadDays = loadInfoPicker.SelectedIndex + 1; 
             string json = JsonConvert.SerializeObject(userSettings);
 			File.WriteAllText(Utils.filePath, json);
 		}

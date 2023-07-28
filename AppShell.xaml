@@ -77,12 +77,6 @@
         Route="WeatherAlertPage" />
 
     <ShellContent
-        Title="Уся інформація"
-        FlyoutIcon="circle_question_solid"
-        ContentTemplate="{DataTemplate custom:AllInfoPage}"
-        Route="AllInfoPage" />
-
-    <ShellContent
         Title="Налаштування"
         FlyoutIcon="gear_solid"
         ContentTemplate="{DataTemplate custom:SettingsPage}"

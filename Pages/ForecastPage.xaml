@@ -5,12 +5,12 @@
              Title="Прогноз погоди">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="1"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView  ZIndex="-1" Grid.Row="0" IsPullToRefreshEnabled="True" IsEnabled="False" SelectionMode="None" Refreshing="updateList_Refreshing" x:Name="updateList"/>
+        <ListView ZIndex="1" SeparatorColor="Transparent" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Start" BackgroundColor="Transparent" IsPullToRefreshEnabled="True" HeightRequest="130" Refreshing="updateList_Refreshing" x:Name="updateList"/>
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout x:Name="testLayout" Margin="15">
+            <VerticalStackLayout x:Name="testLayout" Margin="15" Spacing="50">
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

@@ -1,4 +1,4 @@
-using CommunityToolkit.Maui.Alerts;
+﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using Newtonsoft.Json;
 using Weather_App.Models;
@@ -7,8 +7,9 @@ namespace Weather_App.Pages;
 
 public partial class InformationAboutCityPage : ContentPage
 {
-    private List<WeatherAPI> weatherAPIList = new List<WeatherAPI>();
     private Settings settings = new Settings();
+    private VerticalStackLayout mainStackLayout;
+    private Frame mainFrame; 
 
     public InformationAboutCityPage()
 	{
@@ -24,25 +25,53 @@ public partial class InformationAboutCityPage : ContentPage
             {
                 mainView.IsRefreshing = true;
             });
+
             HttpClient client = new HttpClient();
             settings = Utils.LoadSettingsData(settings);
             string json = await client.GetStringAsync($"https://api.weatherapi.com/v1/current.json?key={Utils.apiKey}&q={settings.City}&aqi=no");
             WeatherAPI api = JsonConvert.DeserializeObject<WeatherAPI>(json);
-            weatherAPIList.Add(new WeatherAPI() { location = api.location });
+            
             await Dispatcher.DispatchAsync(() =>
             {
-                mainView.ItemsSource = weatherAPIList;
+                mainFrame = new Frame();
+                mainFrame.BorderColor = Colors.Black;
+                mainLayout.Add(mainFrame);
+                mainStackLayout = new VerticalStackLayout();
+                mainStackLayout.Spacing = 15;
+                mainFrame.Content = mainStackLayout;
+            
+                Label cityLabel = new Label();
+                cityLabel.Text = $"Місто: {api.location.Name} 🏙️";
+                mainStackLayout.Children.Add(cityLabel);
+
+                Label regionLabel = new Label();
+                regionLabel.Text = $"Регіон: {api.location.Region} 🌏";
+                mainStackLayout.Children.Add(regionLabel);
+
+                Label countryLabel = new Label();
+                countryLabel.Text = $"Країна: {api.location.Country} 🚩";
+                mainStackLayout.Children.Add(countryLabel);
+
+                Label timeZoneLabel = new Label();
+                timeZoneLabel.Text = $"Часова Зона ID: {api.location.TzId}";
+                mainStackLayout.Children.Add(timeZoneLabel);
+
+                Label currentLocalTimeLabel = new Label();
+                currentLocalTimeLabel.Text = $"Поточний час: {api.location.Localtime} 🕐";
+                mainStackLayout.Children.Add(currentLocalTimeLabel);
+
                 mainView.IsRefreshing = false;
             });
         }
         catch (Exception ex)
         {
-            MainThread.BeginInvokeOnMainThread(() =>
+            await Dispatcher.DispatchAsync(() =>
             {
+                mainStackLayout.Clear();
+                mainFrame.Content = null;
                 mainView.IsRefreshing = false;
-                mainView.ItemsSource = null;
+                mainLayout.Clear();
             });
-            weatherAPIList.Clear();
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             string text = ex.Message;
@@ -58,29 +87,56 @@ public partial class InformationAboutCityPage : ContentPage
     {
         try
         {
-            weatherAPIList.Clear();
             await Dispatcher.DispatchAsync(() =>
             {
-                mainView.ItemsSource = null;
+                mainStackLayout.Clear();
+                mainFrame.Content = null;
+                mainLayout.Clear();
             });
             HttpClient client = new HttpClient();
             settings = Utils.LoadSettingsData(settings);
             string json = await client.GetStringAsync($"https://api.weatherapi.com/v1/current.json?key={Utils.apiKey}&q={settings.City}&aqi=no");
             WeatherAPI api = JsonConvert.DeserializeObject<WeatherAPI>(json);
-            weatherAPIList.Add(new WeatherAPI() { location = api.location });
             await Dispatcher.DispatchAsync(() =>
             {
-                mainView.ItemsSource = weatherAPIList;
+                mainFrame = new Frame();
+                mainFrame.BorderColor = Colors.Black;
+                mainLayout.Add(mainFrame);
+                mainStackLayout = new VerticalStackLayout();
+                mainStackLayout.Spacing = 15;
+                mainFrame.Content = mainStackLayout;
+
+                Label cityLabel = new Label();
+                cityLabel.Text = $"Місто: {api.location.Name} 🏙️";
+                mainStackLayout.Children.Add(cityLabel);
+
+                Label regionLabel = new Label();
+                regionLabel.Text = $"Регіон: {api.location.Region} 🌏";
+                mainStackLayout.Children.Add(regionLabel);
+
+                Label countryLabel = new Label();
+                countryLabel.Text = $"Країна: {api.location.Country} 🚩";
+                mainStackLayout.Children.Add(countryLabel);
+
+                Label timeZoneLabel = new Label();
+                timeZoneLabel.Text = $"Часова Зона ID: {api.location.TzId}";
+                mainStackLayout.Children.Add(timeZoneLabel);
+
+                Label currentLocalTimeLabel = new Label();
+                currentLocalTimeLabel.Text = $"Поточний час: {api.location.Localtime} 🕐";
+                mainStackLayout.Children.Add(currentLocalTimeLabel);
+
                 mainView.IsRefreshing = false;
             });
         }
         catch (Exception ex)
         {
-            weatherAPIList.Clear();
             await Dispatcher.DispatchAsync(() =>
             {
+                mainStackLayout.Clear();
+                mainFrame.Content = null;
                 mainView.IsRefreshing = false;
-                mainView.ItemsSource = null;
+                mainLayout.Clear();
             });
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 

@@ -4,62 +4,15 @@
              x:Class="Weather_App.Pages.InformationAboutCityPage"
              Title="Інформація про місто">
     <Grid>
-        <ListView IsEnabled="False" RowHeight="1000" SelectionMode="None"  x:Name="mainView" IsPullToRefreshEnabled="True" Refreshing="ListView_Refreshing">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <VerticalStackLayout Padding="10" Spacing="15">
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Місто: " FontSize="Subtitle" />
-                                            <Span Text="{Binding location.Name}" FontSize="Subtitle" />
-                                            <Span Text=" 🏙️" FontSize="Subtitle" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Регіон: " FontSize="Subtitle" />
-                                            <Span Text="{Binding location.Region}" FontSize="Subtitle" />
-                                            <Span Text=" 🌏" FontSize="Subtitle" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Країна: " FontSize="Subtitle" />
-                                            <Span Text="{Binding location.Country}" FontSize="Subtitle" />
-                                            <Span Text=" 🚩󠁧󠁢󠁷󠁬󠁳󠁿" FontSize="Subtitle" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Часова Зона ID: " FontSize="Subtitle" />
-                                            <Span Text="{Binding location.TzId}" FontSize="Subtitle" />
-                                            <Span Text=" ⏱️" FontSize="Subtitle" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Поточний час: " FontSize="Subtitle" />
-                                            <Span Text="{Binding location.Localtime}" FontSize="Subtitle" />
-                                            <Span Text=" 🕐" FontSize="Subtitle" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </VerticalStackLayout>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView ZIndex="1" SeparatorColor="Transparent" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Start" BackgroundColor="Transparent" IsPullToRefreshEnabled="True" HeightRequest="130" Refreshing="ListView_Refreshing" x:Name="mainView"/>
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout x:Name="mainLayout" Margin="20">
+                
+            </VerticalStackLayout>
+        </ScrollView>
     </Grid>
 </ContentPage>
