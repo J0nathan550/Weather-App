@@ -5,7 +5,7 @@
              Title="Прогноз погоди">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="130"/>
+            <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ListView  ZIndex="-1" Grid.Row="0" IsPullToRefreshEnabled="True" IsEnabled="False" SelectionMode="None" Refreshing="updateList_Refreshing" x:Name="updateList"/>

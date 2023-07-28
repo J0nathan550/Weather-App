@@ -22,8 +22,8 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Text="Version 1.0.0" TextColor="White" BorderWidth="1" BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" BorderColor="White"/>
-                <Button Text="weatherapi.com" Grid.Column="2" TextColor="White" BorderWidth="1" BorderColor="White" BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}"/>
+                <Button Clicked="PlayMarketButtonClicked" Text="Version 1.0.0" TextColor="White" BorderWidth="1" BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}" BorderColor="White"/>
+                <Button Clicked="WebAPIButtonClicked" Text="weatherapi.com" Grid.Column="2" TextColor="White" BorderWidth="1" BorderColor="White" BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Black}}"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
