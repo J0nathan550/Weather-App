@@ -45,9 +45,13 @@ public partial class AirQualityPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
 
                 Label monokcydLabel = new Label();
@@ -132,9 +136,13 @@ public partial class AirQualityPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
 
                 Label monokcydLabel = new Label();

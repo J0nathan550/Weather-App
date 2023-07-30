@@ -70,7 +70,9 @@ public partial class ForecastPage : ContentPage
                     $"Ультрафіолетовий індекс: {uvQualityForecast}";
                     firstFrameLayout = new VerticalStackLayout();
                     firstFrameLayout.Spacing = 20;
+                    firstFrameLayout.BackgroundColor = Colors.Transparent;
                     Frame mainFrame = new Frame();
+                    mainFrame.BackgroundColor = Colors.Transparent;
                     testLayout.Add(mainFrame);
                     mainFrame.Content = firstFrameLayout;
                     firstFrameLayout.Add(forecastBasicInfo);
@@ -118,6 +120,7 @@ public partial class ForecastPage : ContentPage
                         $"Ультрафіолетовий індекс: {uvQualityForecastHour}";
                         Frame secondFrame = new Frame();
                         secondFrame.Content = forecastByHoursDescription;
+                        secondFrame.BackgroundColor = Colors.Transparent;
                         firstFrameLayout.Add(secondFrame);
                     });
                 }

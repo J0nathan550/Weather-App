@@ -44,9 +44,14 @@ public partial class CurrentWeatherPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
+
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;   
+
                 mainFrame.Content = mainStackLayout;
 
                 Label lastUpdatedWeatherLabel = new Label();
@@ -175,9 +180,14 @@ public partial class CurrentWeatherPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
+                
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
 
                 Label lastUpdatedWeatherLabel = new Label();

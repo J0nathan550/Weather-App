@@ -34,10 +34,15 @@ public partial class WeatherAlertPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
+
                 Label headLineLabel = new Label();
                 if (api.alerts.Alert.Count == 0)
                 {
@@ -141,10 +146,15 @@ public partial class WeatherAlertPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
+
                 Label headLineLabel = new Label();
                 if (api.alerts.Alert.Count == 0)
                 {

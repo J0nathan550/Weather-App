@@ -35,9 +35,13 @@ public partial class InformationAboutCityPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
             
                 Label cityLabel = new Label();
@@ -101,9 +105,13 @@ public partial class InformationAboutCityPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
 
                 Label cityLabel = new Label();

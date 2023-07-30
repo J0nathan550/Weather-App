@@ -33,9 +33,13 @@ public partial class AstronomicPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
 
                 Label sunRiseLabel = new Label();
@@ -59,11 +63,11 @@ public partial class AstronomicPage : ContentPage
                 mainStackLayout.Add(MoonIlluminationLabel);
 
                 Label isMoonUpLabel = new Label();
-                isMoonUpLabel.Text = $"Сходить зараз місяць: {(api.forecast.Forecastday[0].Astro.IsMoonUp == 1 ? "Да" : "Нет")} 🌘";
+                isMoonUpLabel.Text = $"Сходить зараз місяць: {(api.forecast.Forecastday[0].Astro.IsMoonUp == 1 ? "Так" : "Ні")} 🌘";
                 mainStackLayout.Add(isMoonUpLabel);
 
                 Label isSunGoingUpLabel = new Label();
-                isSunGoingUpLabel.Text = $"Сходить зараз сонце: {(api.forecast.Forecastday[0].Astro.IsSunUp == 1 ? "Да" : "Нет")} 🌅";
+                isSunGoingUpLabel.Text = $"Сходить зараз сонце: {(api.forecast.Forecastday[0].Astro.IsSunUp == 1 ? "Так" : "Ні")} 🌅";
                 mainStackLayout.Add(isSunGoingUpLabel);
 
                 mainView.IsRefreshing = false;
@@ -110,9 +114,13 @@ public partial class AstronomicPage : ContentPage
             {
                 mainFrame = new Frame();
                 mainFrame.BorderColor = Colors.Black;
+                mainFrame.BackgroundColor = Colors.Transparent;
+
                 mainLayout.Add(mainFrame);
                 mainStackLayout = new VerticalStackLayout();
                 mainStackLayout.Spacing = 15;
+                mainStackLayout.BackgroundColor = Colors.Transparent;
+
                 mainFrame.Content = mainStackLayout;
 
                 Label sunRiseLabel = new Label();
@@ -136,11 +144,11 @@ public partial class AstronomicPage : ContentPage
                 mainStackLayout.Add(MoonIlluminationLabel);
 
                 Label isMoonUpLabel = new Label();
-                isMoonUpLabel.Text = $"Сходить зараз місяць: {(api.forecast.Forecastday[0].Astro.IsMoonUp == 1 ? "Да" : "Нет")} 🌘";
+                isMoonUpLabel.Text = $"Сходить зараз місяць: {(api.forecast.Forecastday[0].Astro.IsMoonUp == 1 ? "Так" : "Ні")} 🌘";
                 mainStackLayout.Add(isMoonUpLabel);
 
                 Label isSunGoingUpLabel = new Label();
-                isSunGoingUpLabel.Text = $"Сходить зараз сонце: {(api.forecast.Forecastday[0].Astro.IsSunUp == 1 ? "Да" : "Нет")} 🌅";
+                isSunGoingUpLabel.Text = $"Сходить зараз сонце: {(api.forecast.Forecastday[0].Astro.IsSunUp == 1 ? "Так" : "Ні")} 🌅";
                 mainStackLayout.Add(isSunGoingUpLabel);
 
                 mainView.IsRefreshing = false;
